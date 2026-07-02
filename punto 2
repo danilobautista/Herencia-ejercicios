@@ -1,0 +1,68 @@
+#include <iostream>
+
+using namespace std;
+
+class Empleado{
+protected:
+    string nombre;
+    float salario;
+    string cargo;
+
+public:
+    Empleado(string n, float s, string c){
+        nombre = n;
+        salario = s;
+        cargo = c;
+    }
+    void mostrarDatos(){
+        cout << "Nombre: " << nombre << endl;
+        cout << "Cargo: " << cargo << endl;
+        cout << "Salario: $" << salario << endl;
+    }
+};
+class Gerente : public Empleado{
+
+public:
+    Gerente(string n, float s) : Empleado(n, s, "Gerente"){
+    }
+    float calcularAumento(){
+        return salario * 0.20;
+    }
+    void mostrar(){
+        mostrarDatos();
+        cout << "Aumento: $" << calcularAumento() << endl;
+        cout << "Nuevo salario: $" << salario + calcularAumento() << endl;
+    }
+};
+class EmpleadoTemporal : public Empleado{
+
+public:
+    EmpleadoTemporal(string n, float s) : Empleado(n, s, "Empleado Temporal"){
+    }
+
+    float calcularAumento(){
+        return salario * 0.10;
+    }
+    void mostrar(){
+        mostrarDatos();
+        cout << "Aumento: $" << calcularAumento() << endl;
+        cout << "Nuevo salario: $" << salario + calcularAumento() << endl;
+    }
+};
+
+int main(){
+
+    Gerente g1("Juan", 250000);
+
+    cout << "----- GERENTE -----" << endl;
+    g1.mostrar();
+
+    cout << endl;
+
+    EmpleadoTemporal e1("Maria", 150000);
+
+    cout << "----- EMPLEADO TEMPORAL -----" << endl;
+    e1.mostrar();
+
+    return 0;
+}
