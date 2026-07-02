@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+
+class Tienda{
+protected:
+    string nombre;
+    int inventario;
+    float ventas;
+
+public:
+    Tienda(string n, int i, float v){
+        nombre = n;
+        inventario = i;
+        ventas = v;
+    }
+    void mostrarInformacion(){
+        cout << "Nombre de la tienda: " << nombre << endl;
+        cout << "Productos en inventario: " << inventario << endl;
+    }
+};
+class TiendaRopa : public Tienda{
+
+public:
+    TiendaRopa(string n, int i, float v) : Tienda(n, i, v){
+    }
+    void agregarProducto(int cantidad){
+        inventario = inventario + cantidad;
+    }
+    void eliminarProducto(int cantidad){
+        inventario = inventario - cantidad;
+    }
+    float calcularVentas(){
+        return ventas;
+    }
+    void mostrar(){
+        mostrarInformacion();
+        cout << "Total de ventas: $" << calcularVentas() << endl;
+    }
+};
+
+class TiendaElectronica : public Tienda{
+
+public:
+    TiendaElectronica(string n, int i, float v) : Tienda(n, i, v){
+    }
+
+    void agregarProducto(int cantidad){
+        inventario = inventario + cantidad;
+    }
+    void eliminarProducto(int cantidad){
+        inventario = inventario - cantidad;
+    }
+    float calcularVentas(){
+        return ventas;
+    }
+    void mostrar(){
+        mostrarInformacion();
+        cout << "Total de ventas: $" << calcularVentas() << endl;
+    }
+};
+int main(){
+
+    TiendaRopa t1("Moda Joven", 50, 180000);
+
+    t1.agregarProducto(10);
+    t1.eliminarProducto(5);
+
+    cout << "----- TIENDA DE ROPA -----" << endl;
+    t1.mostrar();
+
+    cout << endl;
+
+    TiendaElectronica t2("Tecno Shop", 30, 450000);
+
+    t2.agregarProducto(8);
+    t2.eliminarProducto(3);
+
+    cout << "----- TIENDA ELECTRONICA -----" << endl;
+    t2.mostrar();
+
+    return 0;
+}
