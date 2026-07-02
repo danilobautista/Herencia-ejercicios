@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+class Instrumento{
+protected:
+    string nombre;
+    string material;
+
+public:
+    Instrumento(string n, string m){
+        nombre = n;
+        material = m;
+    }
+    void mostrarInformacion(){
+        cout << "Nombre: " << nombre << endl;
+        cout << "Material: " << material << endl;
+        cout << "Tipo de sonido: Musical" << endl;
+    }
+};
+class Guitarra : public Instrumento{
+
+public:
+    Guitarra(string n, string m) : Instrumento(n, m){
+    }
+    void tocarNotas(){
+        cout << "La guitarra toca: Do - Re - Mi" << endl;
+    }
+    void mostrar(){
+        mostrarInformacion();
+        tocarNotas();
+    }
+};
+class Piano : public Instrumento{
+
+public:
+    Piano(string n, string m) : Instrumento(n, m){
+    }
+    void tocarNotas(){
+        cout << "El piano toca: Fa - Sol - La" << endl;
+    }
+    void mostrar(){
+        mostrarInformacion();
+        tocarNotas();
+    }
+};
+int main(){
+
+    Guitarra g1("Guitarra", "Madera");
+
+    cout << "----- GUITARRA -----" << endl;
+    g1.mostrar();
+
+    cout << endl;
+
+    Piano p1("Piano", "Madera");
+
+    cout << "----- PIANO -----" << endl;
+    p1.mostrar();
+
+    return 0;
+}
