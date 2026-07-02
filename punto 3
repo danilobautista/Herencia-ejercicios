@@ -1,0 +1,63 @@
+#include <iostream>
+
+using namespace std;
+
+class Animal{
+protected:
+    string nombre;
+    int edad;
+
+public:
+    Animal(string n, int e){
+        nombre = n;
+        edad = e;
+    }
+    void mostrarDetalles(){
+        cout << "Nombre: " << nombre << endl;
+        cout << "Edad: " << edad << " años" << endl;
+    }
+};
+
+class Perro : public Animal{
+
+public:
+    Perro(string n, int e) : Animal(n, e){
+    }
+   void hacerSonido(){
+        cout << "Sonido: Guau Guau" << endl;
+    }
+    void mostrar(){
+        mostrarDetalles();
+        hacerSonido();
+    }
+};
+class Gato : public Animal{
+
+public:
+    Gato(string n, int e) : Animal(n, e){
+    }
+    void hacerSonido(){
+        cout << "Sonido: Miau" << endl;
+    }
+
+   void mostrar(){
+        mostrarDetalles();
+        hacerSonido();
+    }
+};
+int main(){
+
+    Perro p1("Rocky", 4);
+
+    cout << "----- PERRO -----" << endl;
+    p1.mostrar();
+
+    cout << endl;
+
+    Gato g1("Michi", 2);
+
+    cout << "----- GATO -----" << endl;
+    g1.mostrar();
+
+    return 0;
+}
