@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+class Persona{
+protected:
+    string nombre;
+    int edad;
+
+public:
+    Persona(string n, int e){
+        nombre = nn;
+        edad = e;
+    }
+    void mostrarInformacion(){
+        cout << "Nombre: " << nombre << endl;
+        cout << "Edad: " << edad << endl;
+    }
+};
+class Estudiante : public Persona{
+private:
+    string curso;
+
+public:
+    Estudiante(string n, int e, string c) : Persona(n, e){
+        curso = c;
+    }
+    void asignarRol(){
+        cout << "Rol: Estudiante" << endl;
+    }
+    void mostrar(){
+        mostrarInformacion();
+        asignarRol();
+        cout << "Curso: " << curso << endl;
+    }
+};
+class Profesor : public Persona{
+private:
+    string materia;
+
+public:
+    Profesor(string n, int e, string m) : Persona(n, e){
+        materia = m;
+    }
+    void asignarRol(){
+        cout << "Rol: Profesor" << endl;
+    }
+    void mostrar(){
+        mostrarInformacion();
+        asignarRol();
+        cout << "Materia: " << materia << endl;
+    }
+};
+
+int main(){
+
+    Estudiante e1("Lucas", 16, "5to Año");
+
+    cout << "----- ESTUDIANTE -----" << endl;
+    e1.mostrar();
+
+    cout << endl;
+
+    Profesor p1("Carlos", 42, "Programacion");
+
+    cout << "----- PROFESOR -----" << endl;
+    p1.mostrar();
+
+    return 0;
+}
