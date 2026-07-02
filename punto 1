@@ -1,0 +1,83 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+class Figura{
+protected:
+    string nombre;
+    string color;
+
+public:
+    Figura(string n, string c){
+        nombre = n;
+        color = c;
+    }
+
+    void imprimirDetalles(){
+        cout << "Figura: " << nombre << endl;
+        cout << "Color: " << color << endl;
+    }
+};
+class Circulo : public Figura{
+private:
+    float radio;
+
+public:
+    Circulo(string c, float r) : Figura("Circulo", c){
+        radio = r;
+    }
+    float calcularArea(){
+        return 3.1416 * radio * radio;
+    }
+    float calcularPerimetro(){
+        return 2 * 3.1416 * radio;
+    }
+
+    void imprimir(){
+        imprimirDetalles();
+        cout << "Radio: " << radio << endl;
+        cout << "Area: " << calcularArea() << endl;
+        cout << "Perimetro: " << calcularPerimetro() << endl;
+    }
+};
+
+class Rectangulo : public Figura{
+private:
+    float base;
+    float altura;
+public:
+    Rectangulo(string c, float b, float a) : Figura("Rectangulo", c){
+        base = b;
+        altura = a;
+    }
+    float calcularArea(){
+        return base * altura;
+    }
+    float calcularPerimetro(){
+        return (base * 2) + (altura * 2);
+    }
+    void imprimir(){
+        imprimirDetalles();
+        cout << "Base: " << base << endl;
+        cout << "Altura: " << altura << endl;
+        cout << "Area: " << calcularArea() << endl;
+        cout << "Perimetro: " << calcularPerimetro() << endl;
+    }
+};
+int main(){
+
+    Circulo c1("Rojo", 5);
+
+    cout << "----- CIRCULO -----" << endl;
+    c1.imprimir();
+
+    cout << endl;
+
+    Rectangulo r1("Azul", 8, 4);
+
+    cout << "----- RECTANGULO -----" << endl;
+    r1.imprimir();
+
+    return 0;
+}
