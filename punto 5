@@ -1,0 +1,68 @@
+#include <iostream>
+
+using namespace std;
+
+class Producto{
+protected:
+    string nombre;
+    float precio;
+    string fechaVencimiento;
+
+public:
+    Producto(string n, float p, string f){
+        nombre = n;
+        precio = p;
+        fechaVencimiento = f;
+    }
+    void mostrarDatos(){
+        cout << "Nombre: " << nombre << endl;
+        cout << "Precio: $" << precio << endl;
+        cout << "Fecha de vencimiento: " << fechaVencimiento << endl;
+    }
+};
+
+class ProductoAlimenticio : public Producto{
+
+public:
+    ProductoAlimenticio(string n, float p, string f) : Producto(n, p, f){
+    }
+    float aplicarDescuento(){
+        return precio * 0.15;
+    }
+    void mostrar(){
+        mostrarDatos();
+        cout << "Descuento: $" << aplicarDescuento() << endl;
+        cout << "Precio final: $" << precio - aplicarDescuento() << endl;
+    }
+};
+class ProductoElectronico : public Producto{
+
+public:
+    ProductoElectronico(string n, float p, string f) : Producto(n, p, f){
+    }
+    float aplicarDescuento(){
+        return precio * 0.10;
+    }
+    void mostrar(){
+        mostrarDatos();
+        cout << "Descuento: $" << aplicarDescuento() << endl;
+        cout << "Precio final: $" << precio - aplicarDescuento() << endl;
+    }
+};
+
+int main(){
+
+    ProductoAlimenticio p1("Leche", 2500, "10/07/2026");
+
+    cout << "----- PRODUCTO ALIMENTICIO -----" << endl;
+    p1.mostrar();
+
+    cout << endl;
+
+    ProductoElectronico p2("Auriculares", 50000, "Sin vencimiento");
+
+    cout << "----- PRODUCTO ELECTRONICO -----" << endl;
+    p2.mostrar();
+
+    return 0;
+}
