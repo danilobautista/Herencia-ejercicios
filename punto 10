@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+class Pago{
+protected:
+    float monto;
+    string fecha;
+
+public:
+    Pago(float m, string f){
+        monto = m;
+        fecha = f;
+    }
+    void mostrarDetalles(){
+        cout << "Monto: $" << monto << endl;
+        cout << "Fecha: " << fecha << endl;
+    }
+};
+class PagoTarjeta : public Pago{
+
+public:
+    PagoTarjeta(float m, string f) : Pago(m, f){
+    }
+    void procesarPago(){
+        cout << "Pago realizado con tarjeta." << endl;
+    }
+    void generarRecibo(){
+        cout << "Recibo generado correctamente." << endl;
+    }
+    void mostrar(){
+        mostrarDetalles();
+        procesarPago();
+        generarRecibo();
+    }
+};
+class PagoPayPal : public Pago{
+
+public:
+    PagoPayPal(float m, string f) : Pago(m, f){
+    }
+    void procesarPago(){
+        cout << "Pago realizado con PayPal." << endl;
+    }
+    void generarRecibo(){
+        cout << "Recibo generado correctamente." << endl;
+    }
+    void mostrar(){
+        mostrarDetalles();
+        procesarPago();
+        generarRecibo();
+    }
+};
+
+int main(){
+
+    PagoTarjeta p1(35000, "02/07/2026");
+
+    cout << "----- PAGO CON TARJETA -----" << endl;
+    p1.mostrar();
+
+    cout << endl;
+
+    PagoPayPal p2(18500, "02/07/2026");
+
+    cout << "----- PAGO CON PAYPAL -----" << endl;
+    p2.mostrar();
+
+    return 0;
+}
