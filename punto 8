@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+class Transporte{
+protected:
+    int capacidad;
+    float velocidadMaxima;
+
+public:
+    Transporte(int c, float v){
+        capacidad = c;
+        velocidadMaxima = v;
+    }
+    void mostrarDatos(){
+        cout << "Capacidad: " << capacidad << " personas" << endl;
+        cout << "Velocidad maxima: " << velocidadMaxima << " km/h" << endl;
+    }
+};
+class Avion : public Transporte{
+
+public:
+    Avion(int c, float v) : Transporte(c, v){
+    }
+    float calcularTiempo(float distancia){
+        return distancia / velocidadMaxima;
+    }
+
+    void mostrar(float distancia){
+        mostrarDatos();
+        cout << "Distancia: " << distancia << " km" << endl;
+        cout << "Tiempo de viaje: " << calcularTiempo(distancia) << " horas" << endl;
+    }
+};
+class Barco : public Transporte{
+
+public:
+    Barco(int c, float v) : Transporte(c, v){
+    }
+    float calcularTiempo(float distancia){
+        return distancia / velocidadMaxima;
+    }
+    void mostrar(float distancia){
+        mostrarDatos();
+        cout << "Distancia: " << distancia << " km" << endl;
+        cout << "Tiempo de viaje: " << calcularTiempo(distancia) << " horas" << endl;
+    }
+};
+int main(){
+
+    Avion a1(180, 850);
+
+    cout << "----- AVION -----" << endl;
+    a1.mostrar(1700);
+
+    cout << endl;
+
+    Barco b1(300, 50);
+
+    cout << "----- BARCO -----" << endl;
+    b1.mostrar(500);
+
+    return 0;
+}
