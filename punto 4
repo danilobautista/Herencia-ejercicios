@@ -1,0 +1,81 @@
+#include <iostream>
+
+using namespace std;
+
+class Vehiculo{
+protected:
+    string marca;
+    string modelo;
+    int anio;
+
+public:
+    Vehiculo(string m, string mo, int a){
+        marca = m;
+        modelo = mo;
+        anio = a;
+    }
+    void mostrarDatos(){
+        cout << "Marca: " << marca << endl;
+        cout << "Modelo: " << modelo << endl;
+        cout << "Año: " << anio << endl;
+    }
+};
+
+class Automovil : public Vehiculo{
+private:
+    float kmLitro;
+
+public:
+    Automovil(string m, string mo, int a, float k) : Vehiculo(m, mo, a){
+        kmLitro = k;
+    }
+    float calcularEficiencia(){
+        return kmLitro;
+    }
+    float combustibleViaje(float kilometros){
+        return kilometros / kmLitro;
+    }
+
+    vid mostrar(float kilometros){
+        mostrarDatos();
+        cout << "Eficiencia: " << calcularEficiencia() << " km/l" << endl;
+        cout << "Combustible para " << kilometros << " km: " << combustibleViaje(kilometros) << " litros" << endl;
+    }
+};
+
+class Motocicleta : public Vehiculo{
+private:
+    float kmLitro;
+
+public:
+    Motocicleta(string m, string mo, int a, float k) : Vehiculo(m, mo, a){
+        kmLitro = k;
+    }
+    float calcularEficiencia(){
+        return kmLitro;
+    }
+    float combustibleViaje(float kilometros){
+        return kilometros / kmLitro;
+    }
+    void mostrar(float kilometros){
+        mostrarDatos();
+        cout << "Eficiencia: " << calcularEficiencia() << " km/l" << endl;
+        cout << "Combustible para " << kilometros << " km: " << combustibleViaje(kilometros) << " litros" << endl;
+    }
+};
+int main(){
+
+    Automovil a1("Toyota", "Corolla", 2022, 15);
+
+    cout << "----- AUTOMOVIL -----" << endl;
+    a1.mostrar(300);
+
+    cout << endl;
+
+    Motocicleta m1("Honda", "Wave", 2023, 35);
+
+    cout << "----- MOTOCICLETA -----" << endl;
+    m1.mostrar(300);
+
+    return 0;
+}
